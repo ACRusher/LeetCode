@@ -1,0 +1,74 @@
+struct Node{
+string val;
+Node * next;
+Node(string s):val(s),next(NULL){}
+};
+class Solution {
+public:
+    int ladderLength(string start, string end, unordered_set<string> &dict) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        Node * head=new Node("");
+        Node * p=head;
+        unordered_set<string>::iterator it=dict.begin();
+        while(it!=dict.end())
+        {
+            p->next=new Node(*it);
+            p=p->next;
+            it++;
+        } p->next=new Node(end);
+        p=head;
+        head=new Node(start);
+        head->next=new Node("zhou2214");
+        int cnt=1;
+        Node * tail=head->next;
+        while(head)
+        {
+            Node * t1=p,*t2=p;
+            while(t2)
+            {
+                if(test(t2->val,head->val))
+                {
+                    if(t2->val==end)
+                        return cnt+1;
+                    tail->next=t2;
+                    tail=tail->next;
+                    t1->next=tail->next;
+                    tail->next=NULL;
+                    t2=t1->next;
+                }
+                else
+                {
+                    t1=t2;
+                    t2=t2->next;
+                }
+            }
+            head=head->next;
+            if(head->val=="zhou2214")
+            {
+                if(head->next==NULL)
+                    return 0;
+                cnt++;
+                head=head->next;
+                tail->next=new Node("zhou2214");
+                tail=tail->next;
+            }
+        }
+        return 0;
+    }
+ inline   bool test(const string& lhs,const string& rhs)
+    {
+        int cnt=0;
+        int size=lhs.size();
+        
+        for(int i=0;i!=size;++i)
+        {
+            if(lhs[i]!=rhs[i])
+                cnt++;
+            if(cnt>1)
+                return false;
+        }
+        if(cnt==1)
+            return true;
+        return false;
+    }
+};
