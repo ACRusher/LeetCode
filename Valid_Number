@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool isNumber(const char *s) {
+     // Note: The Solution object is instantiated only once and is reused by each test case.
+        bool result=false;
+        while(*s==' ') s++;
+        bool f1=false,f2=false,f3=false,f4=false,f=false;
+        if(*s=='-'||*s=='+') s++;
+        while(*s>='0'&&*s<='9'){f1=true; s++;}
+        if(*s=='.')
+          { s++;  while(*s>='0'&&*s<='9'){f2=true; s++;}}
+        if(*s=='e'||*s=='E')
+        {
+            f=true;
+            s++;
+             if(*s=='-'||*s=='+') s++;
+            while(*s>='0'&&*s<='9'){f3=true; s++;}
+        }
+        while(*s==' ') s++;
+        if(*s=='\0'&&(f1||f2))
+            if(f)
+                if(f3)
+                    return true;
+                else
+                    return false;
+            else
+                return true;
+        else
+            return false;
+    }
+};
