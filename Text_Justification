@@ -1,0 +1,74 @@
+class Solution {
+public:
+    vector<string> fullJustify(vector<string> &words, int L) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        vector<string> result;
+        if(words[0]=="")
+        {
+            result.push_back(string(L,' '));
+            return result;
+        }
+        bool LastLine=false;
+        string Line;int startIndex=0;
+        while(!LastLine)
+        {
+            Line.clear();
+            int endIndex=startIndex+1;
+            int temp=words[startIndex].length();
+            while(endIndex<words.size())
+            {
+                if(temp+words[endIndex].length()+1<=L)
+                    {
+                        temp+=words[endIndex].length()+1;
+                        endIndex++;
+                    }
+                else
+                {
+                    break;
+                }
+                    
+            }
+            if(endIndex==words.size())
+            {
+                Line=words[startIndex];
+                for(int i=startIndex+1;i<endIndex;++i)
+                {
+                    Line+=" "+words[i];
+                }
+                
+                int tt=L-temp;
+                Line+=string(tt,' ');
+                result.push_back(Line);
+                return result;
+            }
+            int sum=(L-temp+endIndex-startIndex-1),spaceAverage=sum;
+            if(endIndex-startIndex-1)
+            {
+                spaceAverage=sum/(endIndex-startIndex-1);
+            }
+            int LeftSpaceNum=sum-spaceAverage*(endIndex-startIndex-1);
+            Line=words[startIndex];
+            for(int i=startIndex+1,j=1;i<endIndex;++i,++j )
+            {
+                if(j<=LeftSpaceNum)
+                {
+                    string str(spaceAverage+1,' ');
+                    Line+=str+words[i];
+                }
+                else
+                {
+                    string str(spaceAverage,' ');
+                    Line+=str+words[i];
+                }
+            }
+            if(endIndex==startIndex+1)
+            {
+                Line+=string(LeftSpaceNum,' ');
+            }
+            result.push_back(Line);
+            startIndex=endIndex;
+            
+        }
+    }
+};
