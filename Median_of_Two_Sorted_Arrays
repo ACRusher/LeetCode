@@ -1,0 +1,93 @@
+class Solution {
+public:
+    double findMedianSortedArrays(int A[], int m, int B[], int n) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+
+        int middle=(m+n+1)/2;
+        middle--;
+        int H[]={0,0};//A and B 
+        int HMAX[]={m,n};
+        if(m>=middle)
+        {
+            H[0]=middle;
+        }
+        else
+        {
+            H[1]=middle;
+        }
+        int size=middle;
+        int cur=m>=middle?0:1;
+        int * arr[]={A,B};
+        if(size==1)
+        {
+            if(HMAX[cur^1]&&arr[cur][0]>arr[cur^1][0])
+            {
+                H[cur]=0;
+                H[cur^1]=1;
+                cur=cur^1;
+            }
+        }
+        while(size>0)
+        {
+            if(H[cur]==HMAX[cur]||(H[cur^1]==0||arr[cur][H[cur]]>=arr[cur^1][H[cur^1]-1]))
+            {
+                if(H[cur^1]==HMAX[cur^1]||(H[cur]==0||arr[cur^1][H[cur^1]]>=arr[cur][H[cur]-1]))
+                {
+                    size=1;
+                    break;
+                }
+            }
+            if(H[cur]==HMAX[cur]||(H[cur^1]==0||arr[cur][H[cur]]>=arr[cur^1][H[cur^1]-1]))
+            {
+                size=(size+1)/2;
+                if(H[cur^1]+size>HMAX[cur^1])
+                    size=HMAX[cur^1]-H[cur^1];
+                H[cur]-=size;
+                H[cur^1]+=size;
+                continue;
+            }
+            else 
+            {
+                size=(size+1)/2;
+                if(H[cur]+size>HMAX[cur])
+                    size=HMAX[cur]-H[cur];
+                H[cur]+=size;
+                H[cur^1]-=size;
+                continue;
+            }
+        }
+        double fix=0;
+        
+        if(H[cur]==HMAX[cur])
+        {
+            if(arr[cur^1][H[cur^1]]==arr[cur^1][H[cur^1]+1])
+                fix=0;
+            else if((m+n)%2==0)
+            {
+                fix=(arr[cur^1][H[cur^1]+1]-arr[cur^1][H[cur^1]])/2.0;
+            }
+            return arr[cur^1][H[cur^1]]+fix;
+        }
+        if(H[cur^1]==HMAX[cur^1])
+        {
+            if(arr[cur][H[cur]]==arr[cur][H[cur]+1])
+                fix=0;
+            else if((m+n)%2==0)
+            {
+                fix=(arr[cur][H[cur]+1]-arr[cur][H[cur]])/2.0;
+            }
+            return arr[cur][H[cur]]+fix;
+        }  
+        int help=cur;
+        if(arr[cur][H[cur]]>arr[cur^1][H[cur^1]])
+            cur^=1;
+        int a=99999999;
+        if(H[cur]+1<HMAX[cur])
+            a=arr[cur][H[cur]+1];
+        int b=arr[cur^1][H[cur^1]],c=a<=b?a:b;
+        if((m+n)%2==0)
+            fix=(c-arr[cur][H[cur]])/2.0;
+        return arr[cur][H[cur]]+fix;
+    }
+};
