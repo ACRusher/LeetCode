@@ -1,0 +1,52 @@
+class Solution {
+public:
+    vector<int> findSubstring(string S, vector<string> &L) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        vector<int> result;
+        vector<string>::iterator it;
+
+
+        int size=L.size();
+        int sizeWord=L[0].size();
+        map<string,int> words;
+        for(int i=0;i<size;++i)
+        {
+            words[L[i]]++;
+        }
+        map<string,int> aux;int tt=S.size()-size*sizeWord;
+        if(tt>2000)
+            return result;
+        for(int i=0;i<=tt;++i)
+        {
+            int t=i;
+            int cnt=0;
+            aux.clear();
+            while(1)
+            {
+                string temp;
+                if(t+sizeWord<=S.size())
+                    temp=S.substr(t,sizeWord);
+                else
+                    break;
+                if(words.find(temp)!=words.end())
+                {
+                    t+=sizeWord;
+                    cnt++;
+                    aux[temp]++;
+                }
+                else
+                {
+                    break;
+                }
+                if(cnt==size)
+                {
+                    break;
+                }
+            }
+            if(cnt==size&&aux==words)
+                result.push_back(i);
+        }
+        return result;
+    }
+};
