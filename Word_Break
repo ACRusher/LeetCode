@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<string> wordBreak(string s, unordered_set<string> &dict) {
+        // IMPORTANT: Please reset any member data you declared, as
+        // the same Solution instance will be reused for each test case.
+        int size=s.size();
+        vector<vector<string> > aux;
+        aux.resize(size);
+        for(int i=size-1;i>=0;i--)
+        {
+            int j=i;
+            for(;j<size;++j)
+            {
+                string t=s.substr(i,j-i+1);
+                if(dict.find(t)!=dict.end())
+                {
+                    if(j+1>=size)//||aux[j+1].empty() )
+                    {
+                        aux[i].push_back(t);
+                    }
+                    else if(!aux[j+1].empty())
+                    {
+                        int L=aux[j+1].size();
+                        for(int k=0;k<L;++k)
+                        {
+                            aux[i].push_back(t+" "+aux[j+1][k]);
+                        }
+                    }
+                }
+            }
+        }
+        return aux[0];
+    }
+};
