@@ -1,0 +1,114 @@
+struct data{
+int value;
+int next;
+int pre;
+data(int v,int n,int p):next(n),value(v),pre(p){}
+data():next(0),value(0),pre(0){}
+};
+class LRUCache{
+public:
+    LRUCache(int capacity) {
+        size=capacity;
+        aux.clear();
+        tail=head=0;
+    }
+    
+    int get(int key) {
+        if(aux.find(key)!=aux.end())
+           { 
+               if(key!=head)
+               {
+                   int pre=aux[key].pre;
+                   int next=aux[key].next;
+                   if(pre!=0)
+                   {
+                       aux[pre].next=next;
+                   }
+                   if(next!=0)
+                   {
+                       aux[next].pre=pre;
+                   }
+                   if(tail==key)
+                   {
+                       tail=pre;
+                   }
+                   aux[head].pre=key;
+                   aux[key].pre=0;
+                   aux[key].next=head;
+                   head=key;
+               }
+               return aux[key].value;
+           }
+        return -1;
+    }
+    
+    void set(int key, int value) {
+        bool exist=false;
+        if(aux.find(key)!=aux.end())
+        {
+            exist=true;
+            if(key!=head)
+               {
+                   int pre=aux[key].pre;
+                   int next=aux[key].next;
+                   if(pre!=0)
+                   {
+                       aux[pre].next=next;
+                   }
+                   if(next!=0)
+                   {
+                       aux[next].pre=pre;
+                   }
+                   if(tail==key)
+                   {
+                       tail=pre;
+                   }
+                   aux[head].pre=key;
+                   aux[key].pre=0;
+                   aux[key].next=head;
+                   aux[key].value=value;
+                   head=key;
+               }
+               else
+               {
+                   aux[key].value=value;
+               }
+               return;
+        }
+        if(aux.size()<size)
+        {
+            if(aux.size())
+            {
+                aux[key]=data(value,head,0);
+                aux[head].pre=key;
+                head=key;
+            }
+            else
+            {
+                head=tail=key;
+                aux[key]=data(value,0,0);
+            }
+            
+        }
+        else
+        {
+            int pre=aux[tail].pre;
+            aux.erase(tail);
+            if(pre)
+                aux[pre].next=0;
+            tail=pre;
+            if(tail==0)
+                head=0;
+            
+            aux[key]=data(value,head,0);
+            if(head)
+                aux[head].pre=key;
+            head=key;
+        }
+    }
+private:
+    map<int,data> aux;
+    int size;
+    int tail;
+    int head;
+};
