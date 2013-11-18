@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int atoi(const char *str) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        double result=0;
+        while(str[0]==' ')
+            str++;
+        if(str[0]==0)
+            return 0;
+        bool negative=false;
+        if(str[0]=='-')
+        {
+            str++;
+            negative=true;
+        }
+        else if(str[0]=='+')
+        {
+            str++;
+        }
+        if(!(str[0]<='9'&&str[0]>='0'))
+        {
+            return 0;
+        }
+        while(str[0]<='9'&&str[0]>='0')
+        {
+            result*=10;
+            result+=str[0]-'0';
+            str++;
+        }
+        if(result>INT_MAX&&!negative)
+            return 2147483647;
+        if((result>INT_MAX)&&negative)
+            return INT_MIN;
+        if(negative)
+            result*=-1;
+        return result;
+    }
+};
