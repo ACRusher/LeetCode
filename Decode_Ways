@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int numDecodings(string s) {
+        // Note: The Solution object is instantiated only once and is reused by each test case.
+        int size=s.length();
+        if(size==0) return 0;
+        int * arr=new int[size+1];
+        arr[size]=1;
+        if(s[size-1]>'0') arr[size-1]=1;
+        else arr[size-1]=0;
+        for(int i=size-2;i>=0;--i)
+        {
+            if(s[i]=='0')
+                arr[i]=0;
+            else if(s[i]<'2'||s[i]=='2'&&s[i+1]<='6')
+            {
+                arr[i]=arr[i+1]+arr[i+2];
+            }
+            else
+                arr[i]=arr[i+1];
+        }
+        size=arr[0];
+        delete [] arr;
+        return size;
+    }
+};
