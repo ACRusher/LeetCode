@@ -1,0 +1,70 @@
+public class Solution {
+     public static String fractionToDecimal(int a, int b) {
+        boolean flag=false;
+        long numerator=0,denominator=0;
+        if(a>0&&b<0 || a<0&&b>0) flag=true;
+        if(a<0) numerator-=a; else numerator=a;
+        if(b<0) denominator-=b; else denominator=b;
+        long aa=numerator/denominator;
+        numerator=numerator%denominator;
+        int cnt=0;
+        Map<String,Integer> map=new HashMap<String, Integer>();
+        StringBuilder sb=new StringBuilder();
+        int circleIndex=0;
+        while ( numerator>0){
+            while(numerator<denominator){
+                cnt++;
+                numerator*=10;
+                sb.append(0);
+            }
+            sb.deleteCharAt(sb.length()-1);
+            if(map.containsKey(numerator+"-"+denominator)){
+                circleIndex=map.get(numerator+"-"+denominator);
+                break;
+            }
+            sb.append(numerator / denominator);
+            map.put(numerator + "-" + denominator, cnt);
+            numerator%=denominator;
+        }
+        StringBuilder result=new StringBuilder();
+        if(flag) result.append("-");
+        result.append(aa);
+        if(sb.length()>0){
+            result.append(".");
+            if(numerator==0){
+                result.append(sb.toString());
+            }else{
+                String s1=sb.substring(0,circleIndex-1);
+                char ch=sb.charAt(circleIndex-1);
+                String s2=sb.substring(circleIndex,sb.length());
+                if(getLengthOfZero(s1)>=getLengthOfZero(s2)){
+                    int size=getLengthOfZero(s2);
+                    for(int i=0;i<s1.length()-size;++i){
+                        result.append(s1.charAt(i));
+                    }
+                    result.append("(");
+                    for(int i=0;i<size;++i){
+                        result.append("0");
+                    }
+                    result.append(ch).append(parseS2(s2)).append(")");
+                }else{
+                    result.append(s1).append("(").append(ch).append(s2).append(")");
+                }
+            }
+        }
+        return result.toString();
+    }
+    static int getLengthOfZero(String s){
+        int result=0;
+        for(int i=s.length()-1;i>=0;--i){
+            if(s.charAt(i)=='0')
+                result++;
+            else break;
+        }
+        return result;
+    }
+    static String parseS2(String s){
+        return s.replaceAll("0+$","");
+    }
+    
+}
