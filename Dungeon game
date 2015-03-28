@@ -1,0 +1,52 @@
+public class Solution {
+    int[][] aux=null;
+    int[][] arr=null;
+    int rowN,coloumnN;
+    void initAux(int rowSize,int coloumnSize){
+        rowN=rowSize;coloumnN=coloumnSize;
+        aux=new int[rowSize][];
+        for(int i=0;i<rowSize;++i){
+            aux[i]=new int[coloumnSize];
+        }
+    }
+    public int calculateMinimumHP(int[][] dungeon) {
+        initAux(dungeon.length,dungeon[0].length);
+        arr=dungeon;
+        for(int i=0;i<rowN-1;++i)
+            aux[i][coloumnN-1]=-1;
+        for(int i=0;i<coloumnN-1;++i)
+            aux[rowN-1][i]=1;
+        for(int i=coloumnN-2;i>=0;i--)
+            for(int j=rowN-2;j>=0;j--)
+            {
+                int rightHealth=f(j,i+1,arr[j][i]);
+                int downHealth=f(j+1,i,arr[j][i]);
+                if(rightHealth<downHealth){
+                    aux[j][i]=1;
+                }else{
+                    aux[j][i]=-1;
+                }
+                if(i==0 && j==0)
+                    return Math.min(rightHealth,downHealth);
+            }
+        return f(0,0,0);
+    }
+    int f(int x,int y,int startValue){
+        int needHealth=1;
+        if(startValue<=0){
+            needHealth=-startValue+1;
+        }
+        while(x<rowN && y<coloumnN){
+            startValue+=arr[x][y];
+            if(startValue<=0 && (-startValue+1)>needHealth){
+                needHealth=(-startValue+1);
+            }
+            if(aux[x][y]>0){
+                y++;
+            }else {
+                x++;
+            }
+        }
+        return needHealth;
+    }
+}
