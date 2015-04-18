@@ -1,0 +1,20 @@
+public class Solution {
+    public int rangeBitwiseAnd(int m, int n) {
+        int result=0;
+        for(int i=0;i<32;++i){
+            if( dist(m,n,i)&& check(m+1,i) && check(n+1,i)){
+                result|=(1<<i);
+            }
+        }
+        return result;
+    }
+    //check value at  special bit postition if is 1
+    boolean check(int value,int position){
+        if((value%(1<<position))==0)
+            return ((value>>position)%2)==0;
+        return ((value>>position)%2)!=0;
+    }
+    boolean dist(int x,int y,int i){
+        return y-x < (1<<i);
+    }
+}
