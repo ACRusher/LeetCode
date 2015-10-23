@@ -1,4 +1,7 @@
-public class Solution {
+import java.util.ArrayList;
+import java.util.List;
+
+class Solution {
     public int maxProfit(int k, int[] prices) {
         if(k>(prices.length+1)/2){
             k=(prices.length+1)/2;

@@ -28,7 +28,7 @@
 				<configuration>
 					<source>${java_source_version}</source>
 					<target>${java_target_version}</target>
-					<encoding>${file_encoding}</encoding>
+					<encoding>utf-8</encoding>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -231,4 +231,12 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>central</id>
+			<name>oschina</name>
+			<url>http://maven.oschina.net/content/groups/public/</url>
+		</repository>
+	</repositories>
 </project>
