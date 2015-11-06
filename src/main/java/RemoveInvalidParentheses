@@ -1,0 +1,67 @@
+public class Solution {
+    public List<String> removeInvalidParentheses(String s) {
+        if(s==null || s.length()==0){
+            List<String> list=new ArrayList<String>();
+            list.add("");
+            return list;
+        } 
+        return calculate(s);
+    }
+    private static List<String> calculate(String s){
+		List<String> result=new ArrayList<String>();
+		recursive(new StringBuilder(),new StringBuilder(),s,0,0,getMinExtract(s),result);
+		return result;
+	}
+	private static void recursive(StringBuilder result,StringBuilder stack,
+								  String origin,int position,int deep,int maxDeep,
+								  List collector){
+		if(position==origin.length()){
+			if(stack.length()==0 && !collector.contains(result.toString())) collector.add(result.toString());
+			return;
+		}
+		if(origin.charAt(position)=='('){
+			result.append('(');
+			stack.append('(');
+			recursive(result, stack, origin, position + 1, deep, maxDeep, collector);
+			stack.deleteCharAt(stack.length() - 1);
+			result.deleteCharAt(result.length()-1);
+			if(deep<maxDeep){
+				recursive(result,stack,origin,position+1,deep+1,maxDeep,collector);
+			}
+			return;
+		}
+		if(origin.charAt(position)==')'){
+
+			if(stack.length()>0 && stack.charAt(stack.length()-1)=='('){
+				result.append(')');
+				stack.deleteCharAt(stack.length() - 1);
+				recursive(result, stack, origin, position + 1, deep, maxDeep, collector);
+				result.deleteCharAt(result.length()-1);
+				stack.append('(');
+			}
+			if(deep<maxDeep){
+				recursive(result,stack,origin,position+1,deep+1,maxDeep,collector);
+			}
+			return;
+		}
+		result.append(origin.charAt(position));
+		recursive(result,stack,origin,position+1,deep,maxDeep,collector);
+		result.deleteCharAt(result.length()-1);
+		return;
+	}
+	private static int getMinExtract(String s){
+		StringBuilder sb =new StringBuilder();
+		for(int i=0,j=s.length();i<j;++i){
+			if(s.charAt(i)=='('){
+				sb.append('(');
+			}else if(s.charAt(i)==')'){
+				if(sb.length()>0 && sb.charAt(sb.length()-1)=='('){
+					sb.deleteCharAt(sb.length()-1);
+				}else{
+					sb.append(')');
+				}
+			}
+		}
+		return sb.length();
+	}
+}
