@@ -17,6 +17,7 @@
 
 		<findbugs.onlyAnalyze>org.mybatis.spring.*,org.mybatis.spring.mapper.*,org.mybatis.spring.support.*,org.mybatis.spring.transaction.*</findbugs.onlyAnalyze>
 		<spring.version>3.0.5.RELEASE</spring.version>
+		<file_encoding>utf-8</file_encoding>
 	</properties>
 
 	<build>
