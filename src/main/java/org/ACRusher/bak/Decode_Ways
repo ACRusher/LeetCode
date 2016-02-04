@@ -1,7 +1,7 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     int numDecodings(string s) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
+        // Note: The org.ACRusher.Solution object is instantiated only once and is reused by each test case.
         int size=s.length();
         if(size==0) return 0;
         int * arr=new int[size+1];

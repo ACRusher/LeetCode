@@ -1,3 +1,5 @@
+package org.ACRusher.leetcode;
+
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -71,7 +73,7 @@ public class MedianFinder {
     }
 };
 
-// Your MedianFinder object will be instantiated and called as such:
-// MedianFinder mf = new MedianFinder();
+// Your org.ACRusher.leetcode.MedianFinder object will be instantiated and called as such:
+// org.ACRusher.leetcode.MedianFinder mf = new org.ACRusher.leetcode.MedianFinder();
 // mf.addNum(1);
 // mf.findMedian();

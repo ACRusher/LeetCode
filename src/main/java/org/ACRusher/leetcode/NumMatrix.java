@@ -1,3 +1,5 @@
+package org.ACRusher.leetcode;
+
 /**
  * @author xiliang.zxl
  * @date 2015-11-21 下午3:15

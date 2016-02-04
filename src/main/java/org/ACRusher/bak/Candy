@@ -1,7 +1,7 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     int candy(vector<int> &ratings) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
+        // Note: The org.ACRusher.Solution object is instantiated only once and is reused by each test case.
         int size=ratings.size();
         vector<int> aux(size,0);
         int result=0;

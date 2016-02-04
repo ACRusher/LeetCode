@@ -3,10 +3,10 @@ string val;
 Node * next;
 Node(string s):val(s),next(NULL){}
 };
-class Solution {
+class org.ACRusher.Solution {
 public:
     int ladderLength(string start, string end, unordered_set<string> &dict) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
+        // Note: The org.ACRusher.Solution object is instantiated only once and is reused by each test case.
         Node * head=new Node("");
         Node * p=head;
         unordered_set<string>::iterator it=dict.begin();

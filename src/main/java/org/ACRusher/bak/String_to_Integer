@@ -1,7 +1,7 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     int atoi(const char *str) {
-        // Note: The Solution object is instantiated only once and is reused by each test case.
+        // Note: The org.ACRusher.Solution object is instantiated only once and is reused by each test case.
         double result=0;
         while(str[0]==' ')
             str++;

@@ -1,4 +1,4 @@
-public class Solution {
+public class org.ACRusher.Solution {
     public List<String> removeInvalidParentheses(String s) {
         if(s==null || s.length()==0){
             List<String> list=new ArrayList<String>();

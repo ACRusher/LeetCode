@@ -1,3 +1,5 @@
+package org.ACRusher.leetcode;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -139,31 +141,31 @@ public class BurstBalloons {
  *  突然感觉跟数学题的转化问题解法 异曲同工。
  *
  */
-class BurstBalloonsDP {
-
-    public int maxCoins(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0];
-        int[] arr=new int[nums.length+2];
-        int n=1;
-        for(int v : nums)
-            if(v!=0)
-                arr[n++]=v;
-        arr[0]=arr[n++]=1;
-        int[][] aux=new int[n][n];
-        for(int i=0;i<n;++i)
-            aux[i]=new int[n];
-        for(int k=3;k<=n;++k){
-            //k代表维度
-            for(int i=0;i<=n-k;++i){
-                for(int j=i+1;j<i+k-1;++j) {
-                    aux[i][i + k - 1] = Math.max(aux[i][i + k - 1], aux[i][j]+aux[j][i+k-1]+arr[i]*arr[i+k-1]*arr[k]);
-                }
-
-            }
-        }
-        return aux[0][n-1];
-
-    }
-
-}
+//class BurstBalloonsDP {
+//
+//    public int maxCoins(int[] nums) {
+//        if (nums == null || nums.length == 0) return 0;
+//        if (nums.length == 1) return nums[0];
+//        int[] arr=new int[nums.length+2];
+//        int n=1;
+//        for(int v : nums)
+//            if(v!=0)
+//                arr[n++]=v;
+//        arr[0]=arr[n++]=1;
+//        int[][] aux=new int[n][n];
+//        for(int i=0;i<n;++i)
+//            aux[i]=new int[n];
+//        for(int k=3;k<=n;++k){
+//            //k代表维度
+//            for(int i=0;i<=n-k;++i){
+//                for(int j=i+1;j<i+k-1;++j) {
+//                    aux[i][i + k - 1] = Math.max(aux[i][i + k - 1], aux[i][j]+aux[j][i+k-1]+arr[i]*arr[i+k-1]*arr[k]);
+//                }
+//
+//            }
+//        }
+//        return aux[0][n-1];
+//
+//    }
+//
+//}

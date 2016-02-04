@@ -1,5 +1,14 @@
-# LeetCode
-SorceCode wrote during  2013.11
+## LeetCode
+=========================
 
-##  leetoj 非加锁题目我自己写的答案 全部是java实现
-##  leetoj 现在题目下面有Discuss按钮，可以找到其他版本的答案
+
+###  during  2013.11
+
+All algorithm implemented by  C++
+
+
+### since 2014
+
+All algorithm implemented by java.
+
+

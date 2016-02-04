@@ -1,4 +1,4 @@
-public class Solution {
+public class org.ACRusher.Solution {
     int[][] aux=null;
     int[][] arr=null;
     int rowN,coloumnN;

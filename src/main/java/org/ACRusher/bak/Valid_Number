@@ -1,7 +1,7 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     bool isNumber(const char *s) {
-     // Note: The Solution object is instantiated only once and is reused by each test case.
+     // Note: The org.ACRusher.Solution object is instantiated only once and is reused by each test case.
         bool result=false;
         while(*s==' ') s++;
         bool f1=false,f2=false,f3=false,f4=false,f=false;

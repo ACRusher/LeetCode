@@ -1,8 +1,8 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     vector<int> findSubstring(string S, vector<string> &L) {
         // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+        // the same org.ACRusher.Solution instance will be reused for each test case.
         vector<int> result;
         vector<string>::iterator it;
 

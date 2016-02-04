@@ -1,3 +1,5 @@
+package org.ACRusher.leetcode;
+
 /**
  * 购买股票策略算法
  * 规则: 1. 买卖必须有1天缓冲 2. 可以尽可能多的买卖

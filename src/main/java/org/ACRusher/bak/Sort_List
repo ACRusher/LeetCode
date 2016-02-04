@@ -6,11 +6,11 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
-class Solution {
+class org.ACRusher.Solution {
 public:
     ListNode *sortList(ListNode *head) {
         // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+        // the same org.ACRusher.Solution instance will be reused for each test case.
         if(head==NULL)
             return NULL;
         return   mergeSort(head);

@@ -1,8 +1,8 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     void solve(vector<vector<char>> &board) {
         // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+        // the same org.ACRusher.Solution instance will be reused for each test case.
         int m=board.size();
         if(m==0)
             return;

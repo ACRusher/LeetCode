@@ -1,4 +1,4 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     vector<vector<string> > findLadders(string start, string end, unordered_set<string> &dict) {
         // Start typing your C/C++ solution below

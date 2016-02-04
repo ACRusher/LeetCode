@@ -1,8 +1,8 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     vector<string> wordBreak(string s, unordered_set<string> &dict) {
         // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+        // the same org.ACRusher.Solution instance will be reused for each test case.
         int size=s.size();
         vector<vector<string> > aux;
         aux.resize(size);

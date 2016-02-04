@@ -1,8 +1,8 @@
-class Solution {
+class org.ACRusher.Solution {
 public:
     vector<string> fullJustify(vector<string> &words, int L) {
         // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
+        // the same org.ACRusher.Solution instance will be reused for each test case.
         vector<string> result;
         if(words[0]=="")
         {

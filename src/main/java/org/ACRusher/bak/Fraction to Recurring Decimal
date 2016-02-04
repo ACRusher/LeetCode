@@ -1,4 +1,4 @@
-public class Solution {
+public class org.ACRusher.Solution {
      public static String fractionToDecimal(int a, int b) {
         boolean flag=false;
         long numerator=0,denominator=0;
