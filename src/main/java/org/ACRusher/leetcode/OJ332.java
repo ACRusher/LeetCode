@@ -16,11 +16,11 @@ public class OJ332 {
         Map<String,PriorityQueue<String>> ticketMap=new HashMap<String, PriorityQueue<String>>();
         for(String[] ticket : tickets){
             ticketMap.computeIfAbsent(ticket[0],k->new PriorityQueue<String>()).add(ticket[1]);
-//            if(!ticketMap.containsKey(ticket[0])) ticketMap.put(ticket[0],new PriorityQueue<String>());
-//            ticketMap.get(ticket[0]).add(ticket[1]);
         }
         List<String> itinerary=new ArrayList<String>();
+        //递归解法
         find(ticketMap,"JFK",itinerary);
+        //迭代解法
 //        Stack<String> stack=new Stack<String>();
 //        stack.push("JFK");
 //        while (!stack.isEmpty()){
