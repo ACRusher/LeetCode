@@ -15,7 +15,7 @@ public class OJ332 {
     public List<String> findItinerary(String[][] tickets) {
         Map<String,PriorityQueue<String>> ticketMap=new HashMap<String, PriorityQueue<String>>();
         for(String[] ticket : tickets){
-            ticketMap.computeIfAbsent(ticket[0],k->new PriorityQueue<String>()).add(ticket[1]);
+//            ticketMap.computeIfAbsent(ticket[0],k->new PriorityQueue<String>()).add(ticket[1]);
         }
         List<String> itinerary=new ArrayList<String>();
         //递归解法
