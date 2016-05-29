@@ -148,7 +148,7 @@ public class HDOJ1078 {
         if(point!=null && point.value>from.value) result.add(point);
     }
 
-    static class Point implements Comparable<Point>{
+    private static class Point implements Comparable<Point>{
         int x;
         int y;
         int value;
