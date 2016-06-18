@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE message SYSTEM "demo.dtd" >
+
+<message>
+
+    <client id="client1">
+        <url>url</url>
+        <pwd>123</pwd>
+        <user>test</user>
+    </client>
+
+    <client id="client2">
+        <url>url</url>
+        <pwd>123</pwd>
+        <user>test</user>
+    </client>
+
+    <client id="client3">
+        <url>url</url>
+        <pwd>2</pwd>
+        <user>test</user>
+    </client>
+
+    <destination client="client1">
+        <type>queue</type>
+        <name>name</name>
+        <params>
+            <threads>1</threads>
+            <autostart>true</autostart>
+        </params>
+    </destination>
+
+    <destination client="client2">
+        <type>queue</type>
+        <name>name</name>
+        <params>
+            <threads>1</threads>
+            <autostart>true</autostart>
+        </params>
+    </destination>
+
+</message>

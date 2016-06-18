@@ -1,0 +1,15 @@
+<!ELEMENT message (client+,destination*) >
+<!ELEMENT client (url,pwd,user) >
+<!ELEMENT destination (type,name,params) >
+<!ELEMENT params (threads,autostart) >
+
+<!ELEMENT url (#PCDATA) >
+<!ELEMENT pwd (#PCDATA) >
+<!ELEMENT user (#PCDATA) >
+<!ELEMENT type (#PCDATA)  >
+<!ELEMENT name (#PCDATA) >
+<!ELEMENT threads (#PCDATA) >
+<!ELEMENT autostart (#PCDATA) >
+
+<!ATTLIST client id ID #REQUIRED >
+<!ATTLIST destination client IDREF #REQUIRED>
